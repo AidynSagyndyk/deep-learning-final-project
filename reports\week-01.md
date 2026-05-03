@@ -13,5 +13,13 @@ This problem has real-world uses in a variety of industries such as:
 * veterinary medicine
 * image search and sorting
 The problem is particularly difficult because many dog breeds are visually similar.
-
+## 3. Dataset
+The **Stanford Dogs Dataset** is utilized in this project, which is an image dataset created for the purpose of fine-grained classification of dog breeds.
+* **Image count:** 20,000+
+* **Class count:** 120 dog breeds
+* **Type of data:** RGB images (JPEG format)
+* **Input:** Dog pictures
+* **Output:** Breed names
+This dataset has a high diversity in dog breeds that look very similar to each other, which complicates the classification task.
+The dataset is publicly available and frequently used in computer vision studies.
 
