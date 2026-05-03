@@ -1,25 +1,36 @@
-# Deep Learning Final Project
-**Sagyndyk Aidyn**
-## Project Topic
-**Stanford Dogs Dataset**
-## 1. Project Title
-**Classification of Dog Breeds with Convolutional Neural Networks**
-## 2. Problem Statement
-The purpose of this project is to create a deep learning algorithm that can accurately classify images of dogs into specific breeds. This is a **multi-class image classification problem**, where:
-* **Input:** dog image
-* **Output:** dog breed
-This problem has real-world uses in a variety of industries such as:
-* pet recognition software
-* veterinary medicine
-* image search and sorting
-The problem is particularly difficult because many dog breeds are visually similar.
-## 3. Dataset
-The **Stanford Dogs Dataset** is utilized in this project, which is an image dataset created for the purpose of fine-grained classification of dog breeds.
-* **Image count:** 20,000+
-* **Class count:** 120 dog breeds
-* **Type of data:** RGB images (JPEG format)
-* **Input:** Dog pictures
-* **Output:** Breed names
-This dataset has a high diversity in dog breeds that look very similar to each other, which complicates the classification task.
-The dataset is publicly available and frequently used in computer vision studies.
+Deep Learning Final Project
 
+Sagyndyk Aidyn
+
+Topic of the Project
+
+Plant Disease Recognition via Convolutional Neural Networks
+
+1. Name of the Project
+
+Recognition of Different Plant Diseases Using Convolutional Neural Networks
+
+2. Problem Statement
+
+The objective of this project is to construct a deep learning model to categorize plant leaf images based on plant diseases. The task of this project is a multi-class image classification problem, in which:
+
+Input: picture of a plant leaf
+Output: disease class (healthy leaf class)
+
+The ability to distinguish various plant diseases can be beneficial to agriculture as it will lead to increased yield of crops.
+
+Challenging aspects: lighting variations, leaf variation and similar appearances of some diseases.
+
+3. Data Set
+
+In the scope of this project, the PlantVillage Dataset will be utilized. It is one of the most popular datasets employed by researchers in computer vision to solve plant disease recognition problems.
+
+Number of images: 50,000+
+Number of classes: Multiple diseases and healthy leaves
+Image Format: RGB images (.JPEG)
+Input: plant leaf images
+Output: disease classes
+
+The data set includes images of both healthy and unhealthy plant leaves collected under specific conditions.
+
+Publicly available and often used in agricultural AI research projects.
