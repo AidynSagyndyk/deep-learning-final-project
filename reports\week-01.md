@@ -1,36 +1,22 @@
-Deep Learning Final Project
-
-Sagyndyk Aidyn
-
-Topic of the Project
-
-Plant Disease Recognition via Convolutional Neural Networks
-
-1. Name of the Project
-
-Recognition of Different Plant Diseases Using Convolutional Neural Networks
-
-2. Problem Statement
-
-The objective of this project is to construct a deep learning model to categorize plant leaf images based on plant diseases. The task of this project is a multi-class image classification problem, in which:
-
-Input: picture of a plant leaf
-Output: disease class (healthy leaf class)
-
-The ability to distinguish various plant diseases can be beneficial to agriculture as it will lead to increased yield of crops.
-
-Challenging aspects: lighting variations, leaf variation and similar appearances of some diseases.
-
-3. Data Set
-
-In the scope of this project, the PlantVillage Dataset will be utilized. It is one of the most popular datasets employed by researchers in computer vision to solve plant disease recognition problems.
-
-Number of images: 50,000+
-Number of classes: Multiple diseases and healthy leaves
-Image Format: RGB images (.JPEG)
-Input: plant leaf images
-Output: disease classes
-
-The data set includes images of both healthy and unhealthy plant leaves collected under specific conditions.
-
-Publicly available and often used in agricultural AI research projects.
+# Deep Learning Final Project  
+**Sagyndyk Aidyn**
+## Project Topic  
+**Classification of plant diseases using convolutional neural networks**
+## 1. Project Title  
+**Classification of plant diseases using convolutional neural networks**
+## 2. Problem statement  
+The objective of this project is to design a deep learning algorithm that can be used to classify leaf images of plants into various disease classes. It will be a **multi-class image classification problem** where:
+- **Input:** leaf image of the plant  
+- **Output:** disease class/healthy leaf class
+This problem is significant in agricultural practices since early detection of plant diseases increases crop yield.
+The problem can be difficult to solve due to changes in lighting conditions, plant leaf morphology, and similarity between disease characteristics.
+## 3. Dataset  
+The PlantVillage dataset is one of the most popular datasets used for plant disease classification.
+- **Dataset name:** PlantVillage Dataset  
+- **No. of images:** ~50,000 images  
+- **No. of classes:** multiple  
+- **Data Type:** RGB images (JPEG format)  
+- **Input:** leaf images  
+- **Output:** disease category/healthy class  
+The dataset contains images of healthy and diseased plants under controlled settings.
+This is an open-access dataset for agricultural studies related to AI.
