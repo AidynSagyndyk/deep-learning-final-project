@@ -135,7 +135,7 @@ The model was trained 25 epochs with CosineAnnealing and dropout. No significant
 
 | | Baseline CNN (Week 2) | **PlantCNN (Week 3)** |
 |---|---|---|
-| Val Accuracy | ~0.71 | **0.9549** |
+| Val Accuracy ?| **0.9549** |
 | Weighted F1 | — | **0.96** |
 | BatchNorm | ✗ | ✓ |
 | Dropout | ✗ | ✓ |
