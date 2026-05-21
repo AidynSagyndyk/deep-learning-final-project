@@ -164,7 +164,7 @@ Tomato diseases (7):        Potato diseases (4):      Pepper diseases (2):
 -  GPU memory as a practical constraint
 
 
-- **Dataset:** PlantVillage, Pennsylvania State University
+- **Dataset:** PlantVillage
 - **Architecture:** ResNet (He et al., 2015)
 - **Framework:** PyTorch & torchvision
 
