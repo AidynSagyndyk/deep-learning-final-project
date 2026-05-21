@@ -150,9 +150,7 @@ Tomato diseases (7):        Potato diseases (4):      Pepper diseases (2):
 - [ ] Real-time inference on edge devices
 - [ ] Multi-disease detection (plant can have 2+ diseases)
 
-##  Documentation
 
-- **[FINAL_PROJECT_REPORT.md](FINAL_PROJECT_REPORT.md)** 
 ##  Performance Summary
 
 **PlantCNN achieves 95.49% accuracy**, making it suitable for:
