@@ -1,0 +1,12 @@
+## Dataset Setup
+
+The dataset was downloaded manually and uploaded to Google Drive.
+
+To use it:
+
+1. Connect Google Drive in Colab.
+2. Make sure the dataset folder is located in:
+
+/MyDrive/datasets/
+
+3. Change the dataset path in the notebook if your folder name is different.
