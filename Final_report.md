@@ -347,7 +347,7 @@ Early disease detection using this model can:
 - Scale to multiple crops and disease types
 
 ### Project Status
-**✓ COMPLETE** — Ready for deployment in precision agriculture systems
+**COMPLETE** — Ready for deployment in precision agriculture systems
 
 ---
 
