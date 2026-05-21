@@ -1,3 +1,3 @@
-Sagyndyk Aidyn
-Project Title
+**Sagyndyk Aidyn
+Classification of plant diseases using convolutional neural networks
 89
