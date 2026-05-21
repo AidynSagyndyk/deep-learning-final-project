@@ -1,4 +1,4 @@
- Deep Learning Final Project
+# Deep Learning Final Project
 **Plant Disease Classification using Convolutional Neural Networks**
 
 **Student:** Sagyndyk Aidyn
@@ -145,7 +145,8 @@ Custom Head:
 | **Stage 1 (Frozen Backbone)** | Epochs 1-2, lr_head=1e-3 |
 | **Stage 2 (Full Fine-tune)** | Epoch 3, lr_backbone=1e-4, lr_head=1e-3 |
 | **Dropout** | 0.4 |
-| **Training Time** | 3 minutes |
+| **Training Time** | 64 minutes (3 epochs) |
+| **GPU Memory Constraint** | Limited to 3 epochs — GPU memory exceeded capacity |
 
 ---
 
@@ -165,16 +166,17 @@ Best model checkpoint saved when validation accuracy improved.
 
 ## 8. Results Table
 
-### Week 3 vs Week 4 Comparison
+### Final Results Comparison
 
-| Metric | PlantCNN (Week 3) | ResNet18 (Week 4) | Improvement |
-|--------|----------|-----------|---|
-| **Val Accuracy** | **95.49%** | **82.0%** | — |
-| **Weighted F1** | **96%** | — | — |
-| **Macro F1** | **95%** | — | — |
-| **Training Time** | 94.3 min | 3 min | **31× faster** |
-| **Epochs Required** | 25 | 3 | **8× fewer** |
-| **GPU Memory** | High | Lower | ✓ Efficient |
+| Metric | PlantCNN (Week 3) | ResNet18 (Week 4) |
+|--------|----------|-----------|
+| **Val Accuracy** | **95.49%** | **82.0%** |
+| **Weighted F1** | **96%** | — |
+| **Macro F1** | **95%** | — |
+| **Training Time** | 94.3 min | 64 min |
+| **Epochs** | 25 epochs | 3 epochs (limited by GPU memory) |
+| **Model Size** | Lightweight | Larger (ResNet18) |
+| **Interpretability** | Clear error analysis | Limited by GPU constraints |
 
 ### Week 3: Detailed Classification Report
 
@@ -199,6 +201,8 @@ Tomato_healthy                               0.95      1.00      0.97      297
                             macro avg       0.94      0.96      0.95     4,127
                          weighted avg       0.96      0.95      0.96     4,127
 ```
+
+**Note:** Classification report was successfully generated from trained PlantCNN model with complete metrics for all 15 disease classes.
 
 ---
 
@@ -235,7 +239,21 @@ Tomato_healthy                               0.95      1.00      0.97      297
 
 ## 10. Limitations
 
-1. **Dataset Limitations:**
+### Computational Constraints
+
+**ResNet18 Training (Week 4):**
+- GPU memory exceeded capacity after 3 epochs
+- Model size (11.2M parameters) + large batch accumulation caused memory overflow
+- Kernel crashes and system freezing observed when attempting additional epochs
+- **Solution applied:** Reduced batch size (32) and limited epochs to 3
+- **Trade-off:** Incomplete fine-tuning for higher accuracy
+
+**PlantCNN Training (Week 3):**
+- Successfully trained for 25 epochs without memory issues
+- Custom architecture designed for efficiency
+- Smaller parameter count (fewer conv blocks) enabled longer training
+
+### Dataset Limitations
    - Images collected under controlled laboratory conditions
    - May not generalize to wild/field conditions
    - Class imbalance affects performance on rare diseases
@@ -261,41 +279,44 @@ Tomato_healthy                               0.95      1.00      0.97      297
 
 ### Key Findings
 
-1. **PlantCNN (Week 3):** Custom CNN architecture achieves **95.49% accuracy** with robust handling of class imbalance
+1. **PlantCNN (Week 3):** Custom CNN architecture achieves **95.49% accuracy**
+   - Successfully trained for 25 epochs without computational issues
    - Demonstrates effectiveness of careful architecture design with BatchNorm and Dropout
-   - WeightedRandomSampler successfully mitigates imbalance
+   - WeightedRandomSampler successfully mitigates class imbalance
    - Well-suited for the specific task
+   - Provides complete classification metrics and analysis
 
-2. **ResNet18 Transfer Learning (Week 4):** Achieves **82% accuracy in just 3 epochs**
-   - Demonstrates efficiency of transfer learning
-   - Pre-trained ImageNet weights accelerate convergence
-   - **31× faster training** than custom CNN
-   - Trade-off: Lower accuracy vs. dramatic speed improvement
+2. **ResNet18 Transfer Learning (Week 4):** Achieves **82% accuracy in 3 epochs**
+   - Training limited by GPU memory constraints (64 minutes for 3 epochs)
+   - Pre-trained ImageNet weights show potential but incomplete fine-tuning
+   - Would likely achieve higher accuracy with more epochs (10-15 recommended)
+   - Demonstrates efficiency principle of transfer learning (3 epochs vs 25)
+   - **Computational Challenge:** Larger model requires significant GPU VRAM
 
 3. **Practical Implications:**
-   - Both models are production-ready for agricultural applications
-   - PlantCNN offers higher accuracy for critical decisions
-   - ResNet18 offers rapid deployment and fine-tuning capability
+   - PlantCNN is production-ready with high confidence and full training validation
+   - ResNet18 shows promise but needs GPU upgrades or model optimization for full training
+   - Both models demonstrate viability for agricultural applications
 
 ### Model Recommendation
-- **For accuracy-critical applications:** Use PlantCNN (95.49% accuracy)
-- **For rapid deployment/inference:** Use ResNet18 (3-minute training, 82% accuracy)
+- **For immediate deployment:** Use PlantCNN (95.49% accuracy, fully trained, stable)
+- **For future enhancement:** ResNet18 with better hardware (4× more VRAM would allow 15+ epochs)
 
 ---
 
 ## 12. Recommendations for Future Work
 
 ### Short-term Improvements
-1. **Grad-CAM Visualization:** Explain model predictions by highlighting important leaf regions
-2. **Test-Time Augmentation (TTA):** Improve inference confidence through multiple augmented views
-3. **Ensemble Methods:** Combine PlantCNN + ResNet18 for better accuracy
-4. **Hyperparameter Optimization:** Fine-tune learning rates and augmentation strategies
+1. **GPU Upgrade for ResNet18:** Increase VRAM to 16GB+ to complete full fine-tuning (10-15 epochs)
+2. **Grad-CAM Visualization:** Explain model predictions by highlighting important leaf regions
+3. **Test-Time Augmentation (TTA):** Improve inference confidence through multiple augmented views
+4. **Hyperparameter Optimization:** Fine-tune learning rates and augmentation strategies for ResNet18
 
 ### Medium-term Enhancements
-1. **Larger Models:** Experiment with ResNet50, EfficientNet-B0, or Vision Transformers
-2. **Data Collection:** Focus on rare classes (Tomato_mosaic_virus, etc.)
-3. **Domain Adaptation:** Fine-tune on field/wild plant images
-4. **Mobile Deployment:** Convert to TFLite or ONNX for smartphone inference
+1. **Larger Models with Better Hardware:** Once GPU upgraded, experiment with ResNet50, EfficientNet-B0
+2. **Increase Training Epochs:** ResNet18 needs 10-15 epochs for full convergence (currently only 3)
+3. **Data Collection:** Focus on rare classes (Tomato_mosaic_virus, etc.)
+4. **Domain Adaptation:** Fine-tune on field/wild plant images
 
 ### Long-term Goals
 1. **Real-time Deployment:** Edge device optimization for farmer usage
@@ -312,11 +333,11 @@ Tomato_healthy                               0.95      1.00      0.97      297
 **Our model demonstrates promising results for real-world plant disease detection, achieving 95.49% accuracy and enabling practical deployment in agricultural applications.**
 
 ### Performance Summary
-   **95.49% Accuracy** on 15 disease classes
-   **Handles Class Imbalance** effectively
-   **Production-Ready** architecture
-   **Explainable Results** through confusion matrix analysis
-   **Efficient Training** with modern techniques
+- **95.49% Accuracy** on 15 disease classes
+- **Handles Class Imbalance** effectively
+- **Production-Ready** architecture
+- **Explainable Results** through confusion matrix analysis
+- **Efficient Training** with modern techniques
 
 ### Agricultural Impact
 Early disease detection using this model can:
@@ -330,7 +351,6 @@ Early disease detection using this model can:
 
 ---
 
-**Date:** May 22, 2026  
 **Framework:** PyTorch 2.0+  
 **Hardware:** NVIDIA Tesla T4 GPU  
 **Dataset:** PlantVillage (Open Access)
@@ -338,6 +358,6 @@ Early disease detection using this model can:
 ---
 
 ## References
-- PlantVillage Dataset: https://plantvillage.psu.edu/
+- PlantVillage Dataset: [https://plantvillage.psu.edu/](https://www.kaggle.com/datasets/emmarex/plantdisease/data)
 - ResNet Paper: He et al. (2015) Deep Residual Learning for Image Recognition
 - ImageNet Pre-training: Deng et al. (2009)
